@@ -1,0 +1,11 @@
+# Ejemplo de configuración de crontab para ejecutar cada 30 minutos
+# Editar con: crontab -e
+
+# Ejecutar cada 30 minutos
+*/30 * * * * cd /ruta/a/tu/proyecto && npm run auto-monitor
+
+# O usando node directamente
+*/30 * * * * /usr/bin/node /ruta/a/tu/proyecto/scripts/auto-monitor.js
+
+# Para logs
+*/30 * * * * cd /ruta/a/tu/proyecto && npm run auto-monitor >> /var/log/telegram-bot.log 2>&1
