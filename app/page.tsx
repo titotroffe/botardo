@@ -3,18 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-  Bot,
-  Search,
-  Bell,
-  TrendingDown,
-  TestTube,
-  RefreshCw,
-  MapPin,
-  Users,
-  Monitor,
-  AlertTriangle,
-} from "lucide-react"
+import { Bot, Search, Bell, TrendingDown, TestTube, RefreshCw, MapPin, Users, Monitor, AlertTriangle } from 'lucide-react'
 import { useState } from "react"
 
 export default function Home() {
@@ -54,24 +43,6 @@ export default function Home() {
       }
     } catch (error) {
       alert("❌ Error de conexión con monitor")
-      console.error(error)
-    }
-  }
-
-  const testOffers = async () => {
-    try {
-      const response = await fetch("/api/test-offers")
-      const result = await response.json()
-
-      if (result.success) {
-        alert(
-          `🧪 Test de ofertas ejecutado!\n\n📊 Ofertas de prueba: ${result.test_offers}\n🔥 Super ofertas: ${result.super_deals}\n🎉 Ofertas normales: ${result.normal_deals}\n📤 Mensajes enviados: ${result.messages_sent}\n\n⚠️ Este es solo un test - Revisa Telegram`,
-        )
-      } else {
-        alert("❌ Error en test: " + result.error)
-      }
-    } catch (error) {
-      alert("❌ Error de conexión")
       console.error(error)
     }
   }
@@ -123,45 +94,45 @@ export default function Home() {
               <span className="text-sm text-gray-500">San Nicolás de los Arroyos - CP 2900</span>
             </div>
             <div className="flex items-center gap-1">
-              <Users className="h-4 w-4 text-blue-500" />
-              <span className="text-sm text-blue-600">Solo ofertas reales</span>
+              <Users className="h-4 w-4 text-green-500" />
+              <span className="text-sm text-green-600">Solo ofertas reales</span>
             </div>
           </div>
         </div>
 
         {/* Aviso importante */}
-        <Card className="mb-8 border-orange-200 bg-orange-50">
+        <Card className="mb-8 border-green-200 bg-green-50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-orange-800">
+            <CardTitle className="flex items-center gap-2 text-green-800">
               <AlertTriangle className="h-5 w-5" />
-              Sistema Corregido - Solo Ofertas Reales
+              Sistema Limpio - Solo Ofertas Reales
             </CardTitle>
-            <CardDescription>El bot ahora solo envía notificaciones cuando encuentra ofertas reales</CardDescription>
+            <CardDescription>Eliminadas todas las ofertas prefijadas y super ofertas falsas</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               <div className="flex items-start gap-2">
                 <span className="text-green-600">✅</span>
-                <span className="text-sm text-orange-700">
-                  <strong>Scraping real:</strong> El bot busca productos reales en las tiendas
+                <span className="text-sm text-green-700">
+                  <strong>Sin super ofertas:</strong> Eliminada la categoría de super ofertas falsas
                 </span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-green-600">✅</span>
-                <span className="text-sm text-orange-700">
-                  <strong>Sin ofertas falsas:</strong> No envía productos por defecto
+                <span className="text-sm text-green-700">
+                  <strong>Sin productos prefijados:</strong> No hay productos por defecto
                 </span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-green-600">✅</span>
-                <span className="text-sm text-orange-700">
-                  <strong>Solo cuando encuentra:</strong> Notificaciones únicamente con ofertas reales
+                <span className="text-sm text-green-700">
+                  <strong>Solo scraping real:</strong> Busca productos reales en las tiendas
                 </span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-blue-600">ℹ️</span>
-                <span className="text-sm text-orange-700">
-                  <strong>Normal no recibir mensajes:</strong> Si no hay ofertas, no se envía nada
+                <span className="text-sm text-green-700">
+                  <strong>Criterio único:</strong> {'500ml < $1000 y 1.5L+ < $2000'}
                 </span>
               </div>
             </div>
@@ -169,46 +140,39 @@ export default function Home() {
         </Card>
 
         {/* URLs para UptimeRobot */}
-        <Card className="mb-8 border-green-200 bg-green-50">
+        <Card className="mb-8 border-blue-200 bg-blue-50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-green-800">
+            <CardTitle className="flex items-center gap-2 text-blue-800">
               <Monitor className="h-5 w-5" />
-              URLs para UptimeRobot
+              URL para UptimeRobot
             </CardTitle>
-            <CardDescription>Usa estas URLs para configurar el monitoreo automático</CardDescription>
+            <CardDescription>Endpoint limpio sin ofertas prefijadas</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              <div className="bg-green-100 p-4 rounded-lg">
-                <h4 className="font-semibold text-green-800 mb-2">🎯 URL Principal (Solo ofertas reales):</h4>
-                <code className="text-sm bg-white p-2 rounded border block">
-                  https://v0-telegram-price-bot.vercel.app/api/monitor
-                </code>
-                <p className="text-xs text-green-700 mt-1">✅ Solo envía cuando encuentra ofertas reales</p>
-              </div>
+            <div className="bg-blue-100 p-4 rounded-lg">
+              <h4 className="font-semibold text-blue-800 mb-2">🎯 URL Principal (Solo ofertas reales):</h4>
+              <code className="text-sm bg-white p-2 rounded border block">
+                https://v0-telegram-price-bot.vercel.app/api/monitor
+              </code>
+              <p className="text-xs text-blue-700 mt-1">✅ Sin productos prefijados - Solo scraping real</p>
+            </div>
 
-              <div className="bg-blue-100 p-4 rounded-lg">
-                <h4 className="font-semibold text-blue-800 mb-2">🧪 URL de Test (Con ofertas de ejemplo):</h4>
-                <code className="text-sm bg-white p-2 rounded border block">
-                  https://v0-telegram-price-bot.vercel.app/api/test-offers
-                </code>
-                <p className="text-xs text-blue-700 mt-1">⚠️ Solo para probar - Envía ofertas de ejemplo</p>
-              </div>
-
-              <div className="bg-yellow-100 p-4 rounded-lg">
-                <h4 className="font-semibold text-yellow-800 mb-2">⚙️ Configuración UptimeRobot:</h4>
-                <ul className="text-sm text-yellow-700 space-y-1">
-                  <li>
-                    • <strong>URL:</strong> /api/monitor (para ofertas reales)
-                  </li>
-                  <li>
-                    • <strong>Interval:</strong> 30 minutes
-                  </li>
-                  <li>
-                    • <strong>Resultado esperado:</strong> Muchas veces "Sin ofertas" (normal)
-                  </li>
-                </ul>
-              </div>
+            <div className="bg-yellow-100 p-4 rounded-lg mt-4">
+              <h4 className="font-semibold text-yellow-800 mb-2">⚙️ Configuración UptimeRobot:</h4>
+              <ul className="text-sm text-yellow-700 space-y-1">
+                <li>
+                  • <strong>URL:</strong> /api/monitor
+                </li>
+                <li>
+                  • <strong>Interval:</strong> 30 minutes
+                </li>
+                <li>
+                  • <strong>Resultado esperado:</strong> "Sin ofertas reales encontradas" (normal)
+                </li>
+                <li>
+                  • <strong>Solo notifica:</strong> Cuando encuentra ofertas reales
+                </li>
+              </ul>
             </div>
           </CardContent>
         </Card>
@@ -222,10 +186,6 @@ export default function Home() {
           <Button onClick={testMonitor} variant="outline" className="flex items-center gap-2 bg-transparent">
             <Monitor className="h-4 w-4" />
             Probar Monitor
-          </Button>
-          <Button onClick={testOffers} variant="outline" className="flex items-center gap-2 bg-yellow-100">
-            <TestTube className="h-4 w-4" />
-            Test con Ofertas
           </Button>
           <Button
             onClick={checkPrices}
@@ -249,7 +209,7 @@ export default function Home() {
               <CardDescription>San Nicolás de los Arroyos (CP 2900) - Solo ofertas reales</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-4 gap-4">
+              <div className="grid md:grid-cols-3 gap-4">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600">{lastResult.result?.total_products || 0}</div>
                   <div className="text-sm text-gray-500">Productos Scrapeados</div>
@@ -261,12 +221,6 @@ export default function Home() {
                 <div className="text-center">
                   <div className="text-2xl font-bold text-purple-600">{lastResult.result?.notifications_sent || 0}</div>
                   <div className="text-sm text-gray-500">Notificaciones Enviadas</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600">
-                    {lastResult.result?.offers_found > 0 ? "✅" : "⏸️"}
-                  </div>
-                  <div className="text-sm text-gray-500">Estado</div>
                 </div>
               </div>
 
@@ -295,20 +249,20 @@ export default function Home() {
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="flex items-center justify-between">
-                <span>🔥 Super Ofertas 500ml</span>
-                <Badge variant="outline" className="bg-red-50 text-red-700 border-red-300">
-                  {"< $700"}
+                <span>Ofertas 500ml</span>
+                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-300">
+                  {'< $1000'}
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span>Ofertas 500ml</span>
-                <Badge variant="outline" className="bg-green-50 text-green-700 border-green-300">
-                  {"< $1000"}
+                <span>Botellas 1.5L+</span>
+                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-300">
+                  {'< $2000'}
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
                 <span>Solo productos reales</span>
-                <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-300">
+                <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-300">
                   Scraping
                 </Badge>
               </div>
@@ -341,13 +295,16 @@ export default function Home() {
         </div>
 
         <div className="mt-8 p-4 bg-green-50 border border-green-200 rounded-lg">
-          <h3 className="font-semibold text-green-800 mb-2">✅ Sistema Corregido:</h3>
+          <h3 className="font-semibold text-green-800 mb-2">✅ Sistema Completamente Limpio:</h3>
           <div className="text-sm text-green-700 space-y-1">
             <div>
-              • 🔍 <strong>Scraping real:</strong> Busca productos reales en las tiendas online
+              • 🚫 <strong>Sin super ofertas:</strong> Eliminada la categoría de super ofertas falsas
             </div>
             <div>
-              • 🚫 <strong>Sin ofertas falsas:</strong> No envía productos por defecto
+              • 🚫 <strong>Sin productos prefijados:</strong> No hay productos por defecto
+            </div>
+            <div>
+              • 🔍 <strong>Solo scraping real:</strong> Busca productos reales en las tiendas online
             </div>
             <div>
               • 📤 <strong>Solo cuando encuentra:</strong> Notificaciones únicamente con ofertas reales
@@ -356,7 +313,7 @@ export default function Home() {
               • ⏸️ <strong>Silencio es normal:</strong> Si no hay ofertas, no molesta con mensajes
             </div>
             <div>
-              • 🎯 <strong>UptimeRobot listo:</strong> Usa /api/monitor para monitoreo automático
+              • 🎯 <strong>Criterio único:</strong> {'500ml < $1000 y 1.5L+ < $2000'}
             </div>
           </div>
         </div>
