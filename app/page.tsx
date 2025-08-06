@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Bot, Search, Bell, TrendingDown, TestTube, RefreshCw, MapPin, Users, Monitor, AlertTriangle } from 'lucide-react'
+import { Bot, Search, Bell, TrendingDown, TestTube, RefreshCw, MapPin, Users, Monitor, AlertTriangle, Clock } from 'lucide-react'
 import { useState } from "react"
 
 export default function Home() {
@@ -100,39 +100,33 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Aviso importante */}
-        <Card className="mb-8 border-green-200 bg-green-50">
+        {/* Aviso de cuenta Hobby */}
+        <Card className="mb-8 border-orange-200 bg-orange-50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-green-800">
-              <AlertTriangle className="h-5 w-5" />
-              Sistema Limpio - Solo Ofertas Reales
+            <CardTitle className="flex items-center gap-2 text-orange-800">
+              <Clock className="h-5 w-5" />
+              Cuenta Hobby - Monitoreo Diario
             </CardTitle>
-            <CardDescription>Eliminadas todas las ofertas prefijadas y super ofertas falsas</CardDescription>
+            <CardDescription>Vercel Hobby permite solo 1 cron job por día</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               <div className="flex items-start gap-2">
-                <span className="text-green-600">✅</span>
-                <span className="text-sm text-green-700">
-                  <strong>Sin super ofertas:</strong> Eliminada la categoría de super ofertas falsas
+                <span className="text-orange-600">⏰</span>
+                <span className="text-sm text-orange-700">
+                  <strong>Frecuencia:</strong> Una vez por día a las 9:00 AM (Argentina)
+                </span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-blue-600">💡</span>
+                <span className="text-sm text-orange-700">
+                  <strong>Alternativa:</strong> Usa UptimeRobot (gratis) para monitoreo cada 30 minutos
                 </span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-green-600">✅</span>
-                <span className="text-sm text-green-700">
-                  <strong>Sin productos prefijados:</strong> No hay productos por defecto
-                </span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-green-600">✅</span>
-                <span className="text-sm text-green-700">
-                  <strong>Solo scraping real:</strong> Busca productos reales en las tiendas
-                </span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-blue-600">ℹ️</span>
-                <span className="text-sm text-green-700">
-                  <strong>Criterio único:</strong> {'500ml < $1000 y 1.5L+ < $2000'}
+                <span className="text-sm text-orange-700">
+                  <strong>Ventaja:</strong> UptimeRobot es más confiable que cron jobs
                 </span>
               </div>
             </div>
@@ -140,39 +134,84 @@ export default function Home() {
         </Card>
 
         {/* URLs para UptimeRobot */}
-        <Card className="mb-8 border-blue-200 bg-blue-50">
+        <Card className="mb-8 border-green-200 bg-green-50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-blue-800">
+            <CardTitle className="flex items-center gap-2 text-green-800">
               <Monitor className="h-5 w-5" />
-              URL para UptimeRobot
+              UptimeRobot (Recomendado) - Gratis
             </CardTitle>
-            <CardDescription>Endpoint limpio sin ofertas prefijadas</CardDescription>
+            <CardDescription>Monitoreo cada 30 minutos sin limitaciones</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="bg-blue-100 p-4 rounded-lg">
-              <h4 className="font-semibold text-blue-800 mb-2">🎯 URL Principal (Solo ofertas reales):</h4>
+            <div className="bg-green-100 p-4 rounded-lg">
+              <h4 className="font-semibold text-green-800 mb-2">🎯 URL para UptimeRobot:</h4>
               <code className="text-sm bg-white p-2 rounded border block">
                 https://v0-telegram-price-bot.vercel.app/api/monitor
               </code>
-              <p className="text-xs text-blue-700 mt-1">✅ Sin productos prefijados - Solo scraping real</p>
+              <p className="text-xs text-green-700 mt-1">✅ Sin productos prefijados - Solo scraping real</p>
+            </div>
+
+            <div className="bg-blue-100 p-4 rounded-lg mt-4">
+              <h4 className="font-semibold text-blue-800 mb-2">⚙️ Configuración UptimeRobot:</h4>
+              <ul className="text-sm text-blue-700 space-y-1">
+                <li>• <strong>Monitor Type:</strong> HTTP(s)</li>
+                <li>• <strong>URL:</strong> https://v0-telegram-price-bot.vercel.app/api/monitor</li>
+                <li>• <strong>Monitoring Interval:</strong> 30 minutes</li>
+                <li>• <strong>Timeout:</strong> 30 seconds</li>
+                <li>• <strong>Gratis:</strong> Hasta 50 monitores</li>
+              </ul>
             </div>
 
             <div className="bg-yellow-100 p-4 rounded-lg mt-4">
-              <h4 className="font-semibold text-yellow-800 mb-2">⚙️ Configuración UptimeRobot:</h4>
-              <ul className="text-sm text-yellow-700 space-y-1">
-                <li>
-                  • <strong>URL:</strong> /api/monitor
-                </li>
-                <li>
-                  • <strong>Interval:</strong> 30 minutes
-                </li>
-                <li>
-                  • <strong>Resultado esperado:</strong> "Sin ofertas reales encontradas" (normal)
-                </li>
-                <li>
-                  • <strong>Solo notifica:</strong> Cuando encuentra ofertas reales
-                </li>
-              </ul>
+              <h4 className="font-semibold text-yellow-800 mb-2">🔗 Crear cuenta UptimeRobot:</h4>
+              <p className="text-sm text-yellow-700 mb-2">
+                1. Ve a <strong>uptimerobot.com</strong><br/>
+                2. Crea cuenta gratuita<br/>
+                3. Add New Monitor → HTTP(s)<br/>
+                4. Pega la URL de arriba<br/>
+                5. Set interval: 30 minutes
+              </p>
+              <Badge variant="outline" className="bg-green-50 text-green-700">
+                ✅ Más confiable que Vercel Cron Jobs
+              </Badge>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Vercel Cron Job (limitado) */}
+        <Card className="mb-8 border-gray-200 bg-gray-50">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-gray-800">
+              <AlertTriangle className="h-5 w-5" />
+              Vercel Cron Job (Limitado)
+            </CardTitle>
+            <CardDescription>Solo una vez por día en cuenta Hobby</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span>Frecuencia</span>
+                <Badge variant="outline" className="bg-orange-50 text-orange-700">
+                  1 vez por día
+                </Badge>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Horario</span>
+                <Badge variant="outline" className="bg-blue-50 text-blue-700">
+                  9:00 AM (Argentina)
+                </Badge>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Estado</span>
+                <Badge variant="outline" className="bg-green-50 text-green-700">
+                  Configurado
+                </Badge>
+              </div>
+            </div>
+            <div className="mt-4 p-3 bg-yellow-100 rounded-lg">
+              <p className="text-sm text-yellow-800">
+                <strong>Limitación:</strong> Vercel Hobby solo permite 1 cron job por día. Para monitoreo más frecuente, usa UptimeRobot (gratis) o upgrade a Vercel Pro.
+              </p>
             </div>
           </CardContent>
         </Card>
@@ -194,7 +233,7 @@ export default function Home() {
             disabled={isChecking}
           >
             {isChecking ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Search className="h-4 w-4" />}
-            {isChecking ? "Monitoreando..." : "Monitoreo Real"}
+            {isChecking ? "Monitoreando..." : "Monitoreo Manual"}
           </Button>
         </div>
 
@@ -273,47 +312,47 @@ export default function Home() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Search className="h-5 w-5" />
-                Fuentes de Datos
+                Opciones de Monitoreo
               </CardTitle>
-              <CardDescription>Sitios web monitoreados en tiempo real</CardDescription>
+              <CardDescription>Diferentes formas de automatizar el bot</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
               <div className="flex items-center justify-between">
-                <span>🏪 La Coope en Casa</span>
-                <Badge variant="secondary">Scraping Real</Badge>
+                <span>🤖 UptimeRobot</span>
+                <Badge variant="secondary" className="bg-green-100 text-green-800">
+                  Cada 30 min - Gratis
+                </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span>🏪 Carrefour</span>
-                <Badge variant="secondary">Scraping Real</Badge>
+                <span>⏰ Vercel Cron</span>
+                <Badge variant="outline" className="bg-orange-100 text-orange-800">
+                  1 vez/día - Hobby
+                </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span>📍 Ubicación</span>
-                <Badge variant="outline">San Nicolás CP 2900</Badge>
+                <span>🔧 Manual</span>
+                <Badge variant="outline">
+                  Cuando quieras
+                </Badge>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        <div className="mt-8 p-4 bg-green-50 border border-green-200 rounded-lg">
-          <h3 className="font-semibold text-green-800 mb-2">✅ Sistema Completamente Limpio:</h3>
-          <div className="text-sm text-green-700 space-y-1">
+        <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <h3 className="font-semibold text-blue-800 mb-2">💡 Recomendación:</h3>
+          <div className="text-sm text-blue-700 space-y-1">
             <div>
-              • 🚫 <strong>Sin super ofertas:</strong> Eliminada la categoría de super ofertas falsas
+              • 🎯 <strong>Usa UptimeRobot:</strong> Gratis, confiable, cada 30 minutos
             </div>
             <div>
-              • 🚫 <strong>Sin productos prefijados:</strong> No hay productos por defecto
+              • ⏰ <strong>Vercel Cron:</strong> Solo 1 vez por día (limitación Hobby)
             </div>
             <div>
-              • 🔍 <strong>Solo scraping real:</strong> Busca productos reales en las tiendas online
+              • 🔧 <strong>Monitoreo manual:</strong> Usa el botón "Monitoreo Manual" cuando quieras
             </div>
             <div>
-              • 📤 <strong>Solo cuando encuentra:</strong> Notificaciones únicamente con ofertas reales
-            </div>
-            <div>
-              • ⏸️ <strong>Silencio es normal:</strong> Si no hay ofertas, no molesta con mensajes
-            </div>
-            <div>
-              • 🎯 <strong>Criterio único:</strong> {'500ml < $1000 y 1.5L+ < $2000'}
+              • 📈 <strong>Para upgrade:</strong> Vercel Pro ($20/mes) permite cron jobs ilimitados
             </div>
           </div>
         </div>
